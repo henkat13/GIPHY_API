@@ -1,12 +1,53 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
+    <title>Favorite Star</title>
 </head>
+
 <body>
-   var topics=["giphy topics"] 
+    <button data-Star="Actors"> Click for more!</button>
+    <div id="gifs-appear-here">
+    </div>
+    <form id="movie-form">
+        <label for="movie-input">Pick a Star</label>
+        <input type="text" id="movie-input"><br>      
+        <input id="add-movie" type="submit" value="Click for More">
+      </form>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script type="text/javascript">
+        $("button").on("click", function () {
+            var topics = $(this).attr("data-Star");
+            var queryUrl = "https://api.giphy.com/v1/gifs/search?q=" + topics + "&api_key=Mr43oZvpmzsVhcOmcNGg2QrOOw4DL2Cs&limit=10";
+
+          $.ajax({
+              url: queryUrl,
+              method: "GET"
+          })  .then(function (response){
+              console.log(response);
+              var results = response.data
+              for (var i = 0; i < results.length; i++) {
+                var topicsDiv = $("<div>")  
+                var p = $("<p>")
+                p.text("Rating " + results[i].rating);
+                var actors = $("<img>")
+                actors.attr("src", results[i].images.fixed_height.url) 
+
+                topicsDiv.append(p);
+                topicsDiv.append(actors);
+                $("#gifs-appear-here").prepend(topicsDiv);
+
+              }
+          })
+        })
+
+
+
+        var topics = ["giphy topics"] 
+    </script>
+
 </body>
+
 </html>
