@@ -7,11 +7,11 @@
 </head>
 
 <body>
-  
+
 
   <form id="movie-form">
-    <label for="movie-input">Pick a Star</label>
-    <input type="text" id="movie-input"><br>
+    <label for="actor-input">Pick a Star</label>
+    <input type="text" id="actor-input"><br>
     <button data-Star="Actors"> Actors</button>
     <!-- <input id="add-movie" type="submit" value="Click for More"> -->
   </form>
@@ -19,16 +19,16 @@
 
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
   <script type="text/javascript">
-  
+
     $("form").on("submit", function (e) {
       e.preventDefault();
 
-      var actors = $("#movie-input").val();
+      var actors = $("#actor-input").val();
       console.log({ actors });
-     $("<button>").on("click" , function (){
-       $("#actor-input").data("actors");
+      $("<button>").on("click", function () {
+        $("#actor-input").data("actors");
 
-     });
+      });
     });
     $("button").on("click", function () {
       var topics = $(this).attr("data-Star");
@@ -54,7 +54,9 @@
         }
       })
     })
-
+// I wanted to generate giphy's with actors after I inputted the name into the search bar. 
+// The console prints the input but only generates the same 10 gifs.
+// needed a function that could generate  the gifs with the actor-input
 
 
     var topics = ["giphy topics"] 
