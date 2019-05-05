@@ -7,23 +7,28 @@
 </head>
 
 <body>
-  <button data-Star="Actors"> Actors</button>
+  
 
   <form id="movie-form">
     <label for="movie-input">Pick a Star</label>
     <input type="text" id="movie-input"><br>
-    <input id="add-movie" type="submit" value="Click for More">
+    <button data-Star="Actors"> Actors</button>
+    <!-- <input id="add-movie" type="submit" value="Click for More"> -->
   </form>
   <div id="gifs-appear-here"> </div>
 
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
   <script type="text/javascript">
+  
     $("form").on("submit", function (e) {
       e.preventDefault();
 
-      var movie = $("#movie-input").val();
-      console.log({ movie });
-      $("<button>") data-star = movie
+      var actors = $("#movie-input").val();
+      console.log({ actors });
+     $("<button>").on("click" , function (){
+       $("#actor-input").data("actors");
+
+     });
     });
     $("button").on("click", function () {
       var topics = $(this).attr("data-Star");
